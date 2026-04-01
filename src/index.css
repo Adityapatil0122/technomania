@@ -1,0 +1,191 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #159946;
+  --color-primary-light: #159946;
+  --color-primary-dark: #107338;
+  --color-secondary: #F59E0B;
+  --color-secondary-light: #FBBF24;
+  --color-dark: #0F172A;
+  --color-dark-light: #1E293B;
+  --color-gray-custom: #94A3B8;
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 110%;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: #1E293B;
+    background: #ffffff;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+
+  ::selection {
+    background: #159946;
+    color: white;
+  }
+}
+
+@layer components {
+  .glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .glass-dark {
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .gradient-primary {
+    background: linear-gradient(135deg, #107338 0%, #159946 100%);
+  }
+
+  .gradient-dark {
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+  }
+
+  .gradient-hero {
+    background: linear-gradient(135deg, #0F172A 0%, #159946 50%, #107338 100%);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #1bb454 0%, #159946 45%, #107338 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-amber {
+    background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 45%, #d97706 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glow-green {
+    box-shadow: 0 0 40px rgba(21, 153, 70, 0.3), 0 0 80px rgba(21, 153, 70, 0.1);
+  }
+
+  .glow-amber {
+    box-shadow: 0 0 40px rgba(245, 158, 11, 0.3), 0 0 80px rgba(245, 158, 11, 0.1);
+  }
+
+  /* Animated gradient border */
+  .gradient-border {
+    position: relative;
+    background: white;
+  }
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(135deg, #159946, #F59E0B, #107338, #159946);
+    background-size: 300% 300%;
+    animation: gradientShift 4s ease infinite;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  .gradient-border:hover::before {
+    opacity: 1;
+  }
+
+  /* Energy pulse ring */
+  .energy-pulse {
+    position: relative;
+  }
+  .energy-pulse::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: inherit;
+    border: 2px solid rgba(21, 153, 70, 0.3);
+    animation: energyPulse 2s ease-in-out infinite;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0F172A;
+}
+::-webkit-scrollbar-thumb {
+  background: #159946;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #159946;
+}
+
+/* Animations */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes energyPulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.02); opacity: 0.6; }
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s linear infinite;
+}
+
+/* Solar panel tilt effect on cards */
+.tilt-card {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+.tilt-card:hover {
+  transform: rotateX(2deg) rotateY(-2deg);
+}
+
+/* Glowing text on hover */
+.glow-text:hover {
+  text-shadow: 0 0 20px rgba(21, 153, 70, 0.5), 0 0 40px rgba(21, 153, 70, 0.2);
+}
+
+/* Swiper overrides */
+.swiper-pagination-bullet {
+  background: #159946 !important;
+  opacity: 0.4;
+}
+.swiper-pagination-bullet-active {
+  opacity: 1 !important;
+  background: #159946 !important;
+}

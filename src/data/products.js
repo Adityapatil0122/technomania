@@ -1,0 +1,66 @@
+const products = [
+  {
+    id: 1,
+    name: 'Monocrystalline Solar Panel',
+    category: 'Solar Panels',
+    spec: '540W',
+    price: '₹18,500',
+    description: 'Top-tier panels with 21.5% efficiency — perfect for rooftops where you want the most power from limited space.',
+    features: ['21.5% Efficiency', '25-Year Warranty', 'Anti-PID Technology', 'Salt Mist Resistant'],
+    image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400&h=300&fit=crop',
+  },
+  {
+    id: 2,
+    name: 'Polycrystalline Solar Panel',
+    category: 'Solar Panels',
+    spec: '335W',
+    price: '₹12,000',
+    description: 'Budget-friendly panels that work well for bigger installations where you have plenty of roof space.',
+    features: ['17.5% Efficiency', '25-Year Warranty', 'High Wind Resistance', 'Low Light Performance'],
+    image: 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=400&h=300&fit=crop',
+  },
+  {
+    id: 3,
+    name: 'Hybrid Solar Inverter',
+    category: 'Inverters',
+    spec: '5kW',
+    price: '₹65,000',
+    description: 'A smart inverter that works both on-grid and off-grid, and manages your battery charging automatically.',
+    features: ['98% Efficiency', 'MPPT Tracking', 'Wi-Fi Monitoring', 'Battery Compatible'],
+    image: 'https://images.unsplash.com/photo-1597079910443-60b3a7cb4bb1?w=400&h=300&fit=crop',
+  },
+  {
+    id: 4,
+    name: 'Lithium Battery Pack',
+    category: 'Batteries',
+    spec: '10kWh',
+    price: '₹1,50,000',
+    description: 'Long-lasting lithium battery that stores your solar power for use at night or during outages.',
+    features: ['6000+ Cycles', '10-Year Warranty', 'BMS Integrated', '95% DoD'],
+    image: 'https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?w=400&h=300&fit=crop',
+  },
+  {
+    id: 5,
+    name: 'Solar Water Heater',
+    category: 'Water Heaters',
+    spec: '200L',
+    price: '₹28,000',
+    description: 'Solar water heater that gives you hot water year-round — no electricity needed.',
+    features: ['200L Capacity', 'Evacuated Tubes', 'Anti-Freeze', '15-Year Life'],
+    image: 'https://images.unsplash.com/photo-1611348586804-61bf6c080437?w=400&h=300&fit=crop',
+  },
+  {
+    id: 6,
+    name: 'Solar Street Light',
+    category: 'Lighting',
+    spec: '40W LED',
+    price: '₹8,500',
+    description: 'Solar street light that turns on at dusk, brightens when it detects motion, and charges itself every day.',
+    features: ['Motion Sensor', '3 Night Modes', 'IP65 Waterproof', '12V Lithium Battery'],
+    image: 'https://images.unsplash.com/photo-1558449028-b53a39d100fc?w=400&h=300&fit=crop',
+  },
+];
+
+export const categories = ['All', 'Solar Panels', 'Inverters', 'Batteries', 'Water Heaters', 'Lighting'];
+
+export default products;

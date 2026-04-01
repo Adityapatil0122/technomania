@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create:*)",
+      "Bash(cp -r technomania-temp/* .)",
+      "Bash(cp technomania-temp/.gitignore .)",
+      "Bash(rm -rf technomania-temp)",
+      "Bash(npm install:*)",
+      "Bash(npx vite:*)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(npm run:*)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173/)",
+      "Bash(find /c/technomania -type f ! -path */node_modules/*)",
+      "WebFetch(domain:technomania.in)"
+    ]
+  }
+}
