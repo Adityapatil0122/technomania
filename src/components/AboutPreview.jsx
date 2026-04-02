@@ -70,13 +70,15 @@ export default function AboutPreview() {
             ))}
           </div>
 
-          <Link
-            to="/about"
-            className="group inline-flex items-center gap-2 rounded-full gradient-primary px-8 py-4 font-bold text-white transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(76,105,113,0.24)]"
-          >
-            Learn More
-            <ArrowRight className="transition-transform duration-300 group-hover:translate-x-1" weight="bold" />
-          </Link>
+          <div className="flex justify-center lg:justify-center">
+            <Link
+              to="/about"
+              className="group inline-flex items-center gap-2 rounded-full gradient-primary px-8 py-4 font-bold text-white transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(76,105,113,0.24)]"
+            >
+              Learn More
+              <ArrowRight className="transition-transform duration-300 group-hover:translate-x-1" weight="bold" />
+            </Link>
+          </div>
         </motion.div>
       </div>
     </section>
