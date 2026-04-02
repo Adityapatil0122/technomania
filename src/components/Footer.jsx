@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, EnvelopeSimple, FacebookLogo, InstagramLogo, Lightning, LinkedinLogo, MapPin, Phone, XLogo } from '@phosphor-icons/react';
+import { ArrowRight, EnvelopeSimple, GlobeHemisphereWest, MapPin, Phone } from '@phosphor-icons/react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import IconBadge from './IconBadge';
+import BrandLogo from './BrandLogo';
+import { company, primaryContact, secondaryContact } from '../data/company';
 
 const quickLinks = [
   { path: '/', label: 'Home' },
@@ -13,90 +15,45 @@ const quickLinks = [
   { path: '/contact', label: 'Contact' },
 ];
 
-const serviceLinks = [
-  'Solar Panel Installation',
-  'Wind Turbine Solutions',
-  'Energy Storage Systems',
-  'Consultation & Design',
-  'Energy Audits',
-];
-
-const socialLinks = [
-  { icon: FacebookLogo, url: '#', label: 'Facebook' },
-  { icon: XLogo, url: '#', label: 'Twitter' },
-  { icon: LinkedinLogo, url: '#', label: 'LinkedIn' },
-  { icon: InstagramLogo, url: '#', label: 'Instagram' },
-];
+const serviceLinks = company.serviceFocus;
 
 export default function Footer() {
   const { ref, inView } = useScrollAnimation(0.1);
 
   return (
-    <footer ref={ref} className="bg-dark text-white relative overflow-hidden">
-      {/* Decorative gradient orb */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
-      {/* Energy grid pattern */}
-      <div className="absolute inset-0 opacity-[0.02] pointer-events-none"
+    <footer ref={ref} className="relative overflow-hidden bg-dark text-white">
+      <div className="pointer-events-none absolute left-1/2 top-0 h-[300px] w-[600px] -translate-x-1/2 rounded-full bg-primary/10 blur-[120px]" />
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.02]"
         style={{
-          backgroundImage: `linear-gradient(rgba(20,184,166,0.5) 1px, transparent 1px),
-                            linear-gradient(90deg, rgba(20,184,166,0.5) 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(rgba(161,214,92,0.45) 1px, transparent 1px),
+                            linear-gradient(90deg, rgba(161,214,92,0.45) 1px, transparent 1px)`,
           backgroundSize: '40px 40px',
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-4 md:px-8 pt-20 pb-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          {/* Brand */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-          >
-            <Link to="/" className="flex items-center gap-3 mb-6">
-              <img src="/logo.png" alt="Technomania Logo" className="w-9 h-9 sm:w-10 sm:h-10 object-contain" />
-              <div>
-                <h3 className="text-lg font-bold leading-tight">Technomania</h3>
-                <p className="text-primary-light text-[10px] tracking-[0.25em] uppercase">Energy LLP</p>
-              </div>
+      <div className="relative z-10 mx-auto max-w-7xl px-4 pb-8 pt-20 md:px-8">
+        <div className="mb-16 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
+            <Link to="/" className="mb-6 inline-flex" aria-label="Technomania Energy home">
+              <BrandLogo size="footer" />
             </Link>
-            <p className="text-gray-custom text-sm leading-relaxed mb-6">
-              Clean energy for homes and businesses across Maharashtra.
-              Solar, wind, and battery systems that actually save you money.
+            <p className="mb-6 text-sm leading-relaxed text-gray-custom">
+              Pune-based solar specialists serving homes, shops, factories, and field sites across Maharashtra.
+              We focus on rooftop solar, solar water pumps, and energy audits that lead to practical energy savings.
             </p>
-            <div className="flex gap-3">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.url}
-                  aria-label={social.label}
-                  className="text-gray-custom hover:text-primary-light transition-all duration-300
-                             hover:scale-110 inline-flex"
-                >
-                  <IconBadge icon={social.icon} size="xs" tone="dark" weight="fill" />
-                </a>
-              ))}
-            </div>
           </motion.div>
 
-          {/* Quick Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <h4 className="text-lg font-bold mb-6 relative">
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.1 }}>
+            <h4 className="relative mb-6 text-lg font-bold">
               Quick Links
-              <span className="absolute -bottom-2 left-0 w-8 h-0.5 bg-secondary rounded-full" />
+              <span className="absolute -bottom-2 left-0 h-0.5 w-8 rounded-full bg-secondary" />
             </h4>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    className="text-gray-custom text-sm hover:text-primary-light transition-all duration-300
-                               flex items-center gap-2 group"
-                  >
-                    <ArrowRight className="text-xs opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300 text-secondary" weight="bold" />
+                  <Link to={link.path} className="group flex items-center gap-2 text-sm text-gray-custom transition-all duration-300 hover:text-primary-light">
+                    <ArrowRight className="-ml-4 text-xs text-secondary opacity-0 transition-all duration-300 group-hover:ml-0 group-hover:opacity-100" weight="bold" />
                     {link.label}
                   </Link>
                 </li>
@@ -104,25 +61,16 @@ export default function Footer() {
             </ul>
           </motion.div>
 
-          {/* Services */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <h4 className="text-lg font-bold mb-6 relative">
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.2 }}>
+            <h4 className="relative mb-6 text-lg font-bold">
               Our Services
-              <span className="absolute -bottom-2 left-0 w-8 h-0.5 bg-secondary rounded-full" />
+              <span className="absolute -bottom-2 left-0 h-0.5 w-8 rounded-full bg-secondary" />
             </h4>
             <ul className="space-y-3">
               {serviceLinks.map((service) => (
                 <li key={service}>
-                  <Link
-                    to="/services"
-                    className="text-gray-custom text-sm hover:text-primary-light transition-all duration-300
-                               flex items-center gap-2 group"
-                  >
-                    <ArrowRight className="text-xs opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300 text-secondary" weight="bold" />
+                  <Link to="/services" className="group flex items-center gap-2 text-sm text-gray-custom transition-all duration-300 hover:text-primary-light">
+                    <ArrowRight className="-ml-4 text-xs text-secondary opacity-0 transition-all duration-300 group-hover:ml-0 group-hover:opacity-100" weight="bold" />
                     {service}
                   </Link>
                 </li>
@@ -130,45 +78,47 @@ export default function Footer() {
             </ul>
           </motion.div>
 
-          {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <h4 className="text-lg font-bold mb-6 relative">
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.3 }}>
+            <h4 className="relative mb-6 text-lg font-bold">
               Contact Us
-              <span className="absolute -bottom-2 left-0 w-8 h-0.5 bg-secondary rounded-full" />
+              <span className="absolute -bottom-2 left-0 h-0.5 w-8 rounded-full bg-secondary" />
             </h4>
             <div className="space-y-4">
-              <a href="tel:+919545345765" className="flex items-start gap-3 text-gray-custom text-sm hover:text-primary-light transition-colors duration-300">
+              <a href={primaryContact.phoneHref} className="flex items-start gap-3 text-sm text-gray-custom transition-colors duration-300 hover:text-primary-light">
                 <IconBadge icon={Phone} size="xs" tone="dark" weight="bold" />
-                +91 95453 45765
+                {primaryContact.phone}
               </a>
-              <a href="mailto:info@technomania.in" className="flex items-start gap-3 text-gray-custom text-sm hover:text-primary-light transition-colors duration-300">
+              <a href={secondaryContact.phoneHref} className="flex items-start gap-3 text-sm text-gray-custom transition-colors duration-300 hover:text-primary-light">
+                <IconBadge icon={Phone} size="xs" tone="dark" weight="bold" />
+                {secondaryContact.phone}
+              </a>
+              <a href={primaryContact.emailHref} className="flex items-start gap-3 text-sm text-gray-custom transition-colors duration-300 hover:text-primary-light">
                 <IconBadge icon={EnvelopeSimple} size="xs" tone="dark" weight="bold" />
-                info@technomania.in
+                {primaryContact.email}
               </a>
-              <div className="flex items-start gap-3 text-gray-custom text-sm">
+              <a href={company.websiteUrl} target="_blank" rel="noreferrer" className="flex items-start gap-3 text-sm text-gray-custom transition-colors duration-300 hover:text-primary-light">
+                <IconBadge icon={GlobeHemisphereWest} size="xs" tone="dark" weight="bold" />
+                {company.website}
+              </a>
+              <div className="flex items-start gap-3 text-sm text-gray-custom">
                 <IconBadge icon={MapPin} size="xs" tone="dark" weight="fill" />
-                Greenland County, Narhe, Pune, Maharashtra
+                {company.shortAddress}
               </div>
             </div>
           </motion.div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-gray-custom text-sm">
-            &copy; {new Date().getFullYear()} Technomania Energy LLP. All rights reserved.
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-center md:flex-row md:text-left">
+          <p className="text-sm text-gray-custom">
+            &copy; {new Date().getFullYear()} {company.legalName}. All rights reserved.
           </p>
-          <div className="flex gap-6">
-            <a href="#" className="text-gray-custom text-sm hover:text-primary-light transition-colors duration-300">
+          <div className="flex flex-wrap justify-center gap-6">
+            <Link to="/privacy-policy" className="text-sm text-gray-custom transition-colors duration-300 hover:text-primary-light">
               Privacy Policy
-            </a>
-            <a href="#" className="text-gray-custom text-sm hover:text-primary-light transition-colors duration-300">
+            </Link>
+            <Link to="/terms-of-service" className="text-sm text-gray-custom transition-colors duration-300 hover:text-primary-light">
               Terms of Service
-            </a>
+            </Link>
           </div>
         </div>
       </div>

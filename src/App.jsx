@@ -12,7 +12,9 @@ import Services from './pages/Services';
 import OurWork from './pages/OurWork';
 import Products from './pages/Products';
 import Contact from './pages/Contact';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 import SolarCalculatorPage from './pages/SolarCalculatorPage';
+import TermsOfService from './pages/TermsOfService';
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -41,6 +43,8 @@ export default function App() {
               <Route path="/our-work" element={<OurWork />} />
               <Route path="/products" element={<Products />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/terms-of-service" element={<TermsOfService />} />
               <Route path="/solar-calculator" element={<SolarCalculatorPage />} />
             </Routes>
           </AnimatePresence>

@@ -10,52 +10,47 @@ export default function ProjectsShowcase() {
   const featured = projects.slice(0, 4);
 
   return (
-    <section ref={ref} className="py-16 sm:py-20 md:py-24 px-4 md:px-8 overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+    <section ref={ref} className="overflow-hidden px-4 py-16 md:px-8 sm:py-20 md:py-24">
+      <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-16 text-center"
         >
-          <span className="text-primary font-semibold text-sm tracking-wider uppercase">
-            Portfolio
+          <span className="text-sm font-semibold uppercase tracking-wider text-primary">
+            Recent Work
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-3 text-dark">
+          <h2 className="mt-3 text-3xl font-bold text-dark md:text-4xl lg:text-5xl">
             Our <span className="text-gradient">Work</span>
           </h2>
-          <p className="text-gray-custom mt-4 max-w-2xl mx-auto text-lg">
-            Some of the solar and energy projects we've completed across Maharashtra.
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-custom">
+            A few of the solar installations we have completed across Maharashtra.
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
+        <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
           {featured.map((project, i) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 40 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.15 }}
-              className="group relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl
-                         transition-all duration-500 cursor-pointer h-56 sm:h-72"
+              className="group relative h-56 cursor-pointer overflow-hidden rounded-2xl shadow-lg transition-all duration-500 hover:shadow-2xl sm:h-72 sm:rounded-3xl"
             >
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/40 to-transparent
-                              opacity-70 sm:opacity-60 group-hover:opacity-90 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/40 to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-90 sm:opacity-60" />
 
-              {/* Content overlay — always visible on mobile, reveal on desktop hover */}
-              <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-white transform
-                              translate-y-0 sm:translate-y-4 sm:group-hover:translate-y-0 transition-transform duration-500">
-                <span className="inline-block px-3 py-1 rounded-full bg-primary/80 text-xs font-medium mb-2 sm:mb-3">
+              <div className="absolute bottom-0 left-0 right-0 translate-y-0 p-4 text-white transition-transform duration-500 sm:translate-y-4 sm:p-6 sm:group-hover:translate-y-0">
+                <span className="mb-2 inline-block rounded-full bg-primary/80 px-3 py-1 text-xs font-medium sm:mb-3">
                   {project.category}
                 </span>
-                <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2">{project.title}</h3>
-                <div className="flex items-center gap-3 sm:gap-4 text-white/70 text-xs sm:text-sm
-                                opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-500 delay-100">
+                <h3 className="mb-1 text-lg font-bold sm:mb-2 sm:text-xl">{project.title}</h3>
+                <div className="flex items-center gap-3 text-xs text-white/70 transition-all duration-500 delay-100 sm:gap-4 sm:text-sm sm:opacity-0 sm:group-hover:opacity-100">
                   <span className="flex items-center gap-1">
                     <IconBadge icon={MapPin} size="xs" tone="dark" weight="fill" />
                     {project.location}
@@ -74,16 +69,14 @@ export default function ProjectsShowcase() {
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ delay: 0.6 }}
-          className="text-center mt-12"
+          className="mt-12 text-center"
         >
           <Link
             to="/our-work"
-            className="group inline-flex items-center gap-2 px-8 py-4 gradient-primary text-white
-                       font-bold rounded-full hover:shadow-[0_0_30px_rgba(15,118,110,0.4)]
-                       hover:scale-105 transition-all duration-300"
+            className="group inline-flex items-center gap-2 rounded-full gradient-primary px-8 py-4 font-bold text-white transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(76,105,113,0.24)]"
           >
             View All Projects
-            <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" weight="bold" />
+            <ArrowRight className="transition-transform duration-300 group-hover:translate-x-1" weight="bold" />
           </Link>
         </motion.div>
       </div>

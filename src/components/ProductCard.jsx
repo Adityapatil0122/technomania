@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Check } from '@phosphor-icons/react';
 import IconBadge from './IconBadge';
+import { buildWhatsAppUrl } from '../data/company';
 
 export default function ProductCard({ product, index, inView }) {
-  const whatsappMsg = encodeURIComponent(`Hi, I'm interested in the ${product.name} (${product.spec}). Can you share more details?`);
-  const whatsappUrl = `https://wa.me/919545345765?text=${whatsappMsg}`;
+  const whatsappUrl = buildWhatsAppUrl(`Hi, I'm interested in the ${product.name} (${product.spec}). Can you share more details?`);
 
   return (
     <motion.div

@@ -19,47 +19,31 @@ export default function Products() {
     if (catParam) setActiveCategory(catParam);
   }, [catParam]);
 
-  const filtered = activeCategory === 'All'
-    ? products
-    : products.filter(p => p.category === activeCategory);
+  const filtered = activeCategory === 'All' ? products : products.filter((p) => p.category === activeCategory);
 
   return (
     <PageTransition>
-      {/* Hero */}
-      <section ref={heroRef} className="relative pt-24 sm:pt-32 pb-16 sm:pb-20 gradient-hero overflow-hidden">
-        <div className="max-w-5xl mx-auto px-4 text-center relative z-10">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-          animate={heroInView ? { opacity: 1, y: 0 } : {}}
-          className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mt-4 mb-6"
-        >
-          Our <span className="text-gradient-amber">Products</span>
-        </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={heroInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.1 }}
-            className="text-white/70 text-lg max-w-2xl mx-auto"
-          >
-            Everything you need for solar power — panels, inverters, batteries, and more.
+      <section ref={heroRef} className="relative overflow-hidden gradient-hero pb-16 pt-24 sm:pb-20 sm:pt-32">
+        <div className="relative z-10 mx-auto max-w-5xl px-4 text-center">
+          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} className="mb-6 mt-4 text-4xl font-bold text-white md:text-5xl lg:text-6xl">
+            Our <span className="text-gradient-amber">Products</span>
+          </motion.h1>
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.1 }} className="mx-auto max-w-2xl text-lg text-white/70">
+            Browse commonly requested solar products, from panels and inverters to batteries and water-heating solutions.
           </motion.p>
         </div>
         <MountainDivider />
       </section>
 
-      {/* Products Grid */}
-      <section ref={gridRef} className="py-16 sm:py-20 md:py-24 px-4 md:px-8">
-        <div className="max-w-7xl mx-auto">
-          {/* Category tabs */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
+      <section ref={gridRef} className="px-4 py-16 md:px-8 sm:py-20 md:py-24">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-12 flex flex-wrap justify-center gap-3">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer ${
-                  activeCategory === cat
-                    ? 'gradient-primary text-white shadow-lg'
-                    : 'bg-gray-100 text-gray-custom hover:bg-gray-200'
+                className={`cursor-pointer rounded-full px-4 py-2.5 text-sm font-medium transition-all duration-300 sm:px-6 ${
+                  activeCategory === cat ? 'gradient-primary text-white shadow-lg' : 'bg-gray-100 text-gray-custom hover:bg-gray-200'
                 }`}
               >
                 {cat}
@@ -67,7 +51,7 @@ export default function Products() {
             ))}
           </div>
 
-          <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <motion.div layout className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {filtered.map((product, i) => (
               <ProductCard key={product.id} product={product} index={i} inView={gridInView} />
             ))}

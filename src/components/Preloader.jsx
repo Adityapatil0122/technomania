@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import BrandLogo from './BrandLogo';
 
 export default function Preloader() {
   return (
@@ -8,9 +9,7 @@ export default function Preloader() {
       transition={{ duration: 0.8, ease: 'easeInOut' }}
     >
       <div className="flex flex-col items-center gap-4 sm:gap-6 px-4">
-        {/* Solar panel icon with energy rays */}
         <div className="relative w-20 h-20 sm:w-24 sm:h-24">
-          {/* Outer energy ring */}
           <motion.div
             className="absolute inset-0 rounded-full border-2 border-primary-light/30"
             animate={{ scale: [1, 1.3, 1], opacity: [0.5, 0, 0.5] }}
@@ -22,18 +21,16 @@ export default function Preloader() {
             transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
           />
 
-          {/* Center sun */}
           <motion.div
             className="absolute inset-2 sm:inset-3 rounded-full"
             style={{
-              background: 'radial-gradient(circle, #FCD34D 0%, #F59E0B 50%, #D97706 100%)',
-              boxShadow: '0 0 30px rgba(245,158,11,0.5), 0 0 60px rgba(245,158,11,0.2)',
+              background: 'radial-gradient(circle, #cdf0a0 0%, #a1d65c 52%, #4C6971 100%)',
+              boxShadow: '0 0 30px rgba(161,214,92,0.35), 0 0 60px rgba(76,105,113,0.18)',
             }}
             animate={{ scale: [0.95, 1.05, 0.95] }}
             transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
           />
 
-          {/* Rotating rays */}
           <motion.div
             className="absolute inset-0"
             animate={{ rotate: 360 }}
@@ -45,8 +42,8 @@ export default function Preloader() {
                 className="absolute w-0.5 sm:w-1 rounded-full left-1/2 -ml-[1px] sm:-ml-[2px]"
                 style={{
                   background: i % 2 === 0
-                    ? 'linear-gradient(to top, transparent, #159946)'
-                    : 'linear-gradient(to top, transparent, #F59E0B)',
+                    ? 'linear-gradient(to top, transparent, #a1d65c)'
+                    : 'linear-gradient(to top, transparent, #4C6971)',
                   height: i % 2 === 0 ? '8px' : '12px',
                   transformOrigin: '50% 48px',
                   transform: `rotate(${i * 30}deg)`,
@@ -58,14 +55,13 @@ export default function Preloader() {
             ))}
           </motion.div>
 
-          {/* Small orbiting energy dots */}
           {[0, 1, 2].map((i) => (
             <motion.div
               key={i}
               className="absolute w-1.5 h-1.5 rounded-full"
               style={{
-                background: i === 1 ? '#F59E0B' : '#159946',
-                boxShadow: `0 0 8px ${i === 1 ? '#F59E0B' : '#159946'}`,
+                background: i === 1 ? '#4C6971' : '#a1d65c',
+                boxShadow: `0 0 8px ${i === 1 ? '#4C6971' : '#a1d65c'}`,
                 top: '50%',
                 left: '50%',
               }}
@@ -92,20 +88,14 @@ export default function Preloader() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          <h2 className="text-2xl font-bold text-white tracking-wider">
-            TECHNOMANIA
-          </h2>
-          <p className="text-primary-light text-sm tracking-[0.3em] mt-1">
-            ENERGY LLP
-          </p>
+          <BrandLogo layout="stacked" size="preloader" />
         </motion.div>
 
-        {/* Energy loading bar */}
         <div className="w-36 sm:w-48 h-1.5 bg-dark-light rounded-full overflow-hidden mt-4 relative">
           <motion.div
             className="h-full rounded-full"
             style={{
-              background: 'linear-gradient(90deg, #159946, #159946, #F59E0B, #159946, #159946)',
+              background: 'linear-gradient(90deg, #072942, #4C6971, #a1d65c, #4C6971, #072942)',
               backgroundSize: '200% 100%',
             }}
             initial={{ width: 0 }}

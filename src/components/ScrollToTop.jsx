@@ -26,7 +26,7 @@ export default function ScrollToTop() {
           exit={{ opacity: 0, scale: 0 }}
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           aria-label="Scroll to top"
-          className="fixed bottom-[5.5rem] right-4 sm:bottom-24 sm:right-6 z-40 w-11 h-11 sm:w-12 sm:h-12
+          className="fixed bottom-[5.5rem] left-4 sm:bottom-24 sm:left-6 z-40 w-11 h-11 sm:w-12 sm:h-12
                      rounded-2xl bg-white border border-primary/12 text-primary shadow-[0_14px_30px_rgba(21,153,70,0.2)]
                      hover:text-primary-light hover:-translate-y-0.5 transition-all duration-300 cursor-pointer
                      flex items-center justify-center"

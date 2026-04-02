@@ -11,7 +11,10 @@
       "Bash(npm run:*)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173/)",
       "Bash(find /c/technomania -type f ! -path */node_modules/*)",
-      "WebFetch(domain:technomania.in)"
+      "WebFetch(domain:technomania.in)",
+      "Bash(ls C:/technomania/public/*.mp4 C:/technomania/public/*.webm C:/technomania/public/videos/)",
+      "Bash(ls C:/technomania/public/vidsolar*)",
+      "Bash(ls C:/technomania/public/imgi_*)"
     ]
   }
 }

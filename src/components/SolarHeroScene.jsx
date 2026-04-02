@@ -23,14 +23,8 @@ export default function SolarHeroScene() {
     };
     window.addEventListener('mousemove', handleMouse, { passive: true });
 
-    // Sun position reference (hidden, but used for panel light beams)
-    const getSunPos = (w, h) => {
-      const mobile = w < 768;
-      return { sunX: w * 0.5, sunY: mobile ? h * 0.13 : h * 0.12 };
-    };
-
     // Solar panels
-    const drawPanels = (w, h, t, sunX, sunY) => {
+    const drawPanels = (w, h, t) => {
       const mobile = w < 768;
       const mx = mouse.current.x - 0.5;
       const my = mouse.current.y - 0.5;
@@ -85,7 +79,7 @@ export default function SolarHeroScene() {
         ctx.fillRect(0, 0, panel.w, panel.h);
 
         // Cell grid lines
-        ctx.strokeStyle = '#159946';
+        ctx.strokeStyle = '#a1d65c';
         ctx.globalAlpha = 0.12 * glow;
         ctx.lineWidth = 0.5;
 
@@ -106,33 +100,15 @@ export default function SolarHeroScene() {
           ctx.stroke();
         }
 
-        // Sunlight reflection
+        // Subtle panel reflection
         ctx.globalAlpha = 0.06 * glow;
         const reflectGrad = ctx.createLinearGradient(0, 0, panel.w * 0.6, panel.h * 0.6);
-        reflectGrad.addColorStop(0, '#FCD34D');
-        reflectGrad.addColorStop(0.5, 'rgba(252,211,77,0.3)');
+        reflectGrad.addColorStop(0, '#D1EB8C');
+        reflectGrad.addColorStop(0.5, 'rgba(161,214,92,0.28)');
         reflectGrad.addColorStop(1, 'transparent');
         ctx.fillStyle = reflectGrad;
         ctx.fillRect(0, 0, panel.w, panel.h);
 
-        ctx.restore();
-
-        // Light beam from sun to panel
-        ctx.save();
-        ctx.globalAlpha = 0.025 + Math.sin(t * 0.015 + idx) * 0.01;
-        const beamGrad = ctx.createLinearGradient(sunX, sunY, px + panel.w / 2, py);
-        beamGrad.addColorStop(0, 'rgba(252, 211, 77, 0.6)');
-        beamGrad.addColorStop(0.5, 'rgba(245, 158, 11, 0.2)');
-        beamGrad.addColorStop(1, 'rgba(20, 184, 166, 0.3)');
-        ctx.strokeStyle = beamGrad;
-        ctx.lineWidth = mobile ? 1 : 1.5;
-        ctx.setLineDash([6, 12]);
-        ctx.lineDashOffset = -t * 0.8;
-        ctx.beginPath();
-        ctx.moveTo(sunX, sunY + 30);
-        ctx.lineTo(px + panel.w / 2, py);
-        ctx.stroke();
-        ctx.setLineDash([]);
         ctx.restore();
       });
     };
@@ -150,7 +126,7 @@ export default function SolarHeroScene() {
         this.life = 0;
         this.maxLife = Math.random() * 180 + 80;
         this.drift = (Math.random() - 0.5) * 0.3;
-        this.color = Math.random() > 0.6 ? '#F59E0B' : '#159946';
+        this.color = Math.random() > 0.55 ? '#a1d65c' : '#4C6971';
       }
       update(w, h) {
         this.life++;
@@ -199,8 +175,7 @@ export default function SolarHeroScene() {
       const h = canvas.height;
       ctx.clearRect(0, 0, w, h);
 
-      const { sunX, sunY } = getSunPos(w, h);
-      drawPanels(w, h, time, sunX, sunY);
+      drawPanels(w, h, time);
       sparks.forEach((s) => { s.update(w, h); s.draw(ctx); });
     };
 

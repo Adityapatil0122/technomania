@@ -19,6 +19,7 @@ export default function IconBadge({
     light: 'bg-white text-primary border border-primary/12 shadow-[0_12px_30px_rgba(21,153,70,0.12)]',
     muted: 'bg-gray-50 text-primary border border-gray-100',
     dark: 'bg-white/10 text-primary-light border border-white/12 backdrop-blur-sm',
+    menu: 'bg-gradient-to-br from-white/12 to-white/6 text-secondary border border-white/12 backdrop-blur-sm shadow-[0_14px_30px_rgba(4,27,44,0.24)]',
     secondary: 'bg-secondary/18 text-primary border border-primary/10 shadow-[0_12px_30px_rgba(21,153,70,0.12)]',
   };
 
